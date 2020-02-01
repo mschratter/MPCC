@@ -41,6 +41,7 @@ struct TrackPos {
 
 class Track {
 public:
+    Track();
     Track(std::string file);
     TrackPos getTrack();
 

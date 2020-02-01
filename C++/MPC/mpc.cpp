@@ -185,6 +185,21 @@ void MPC::setTrack(const Eigen::VectorXd &X, const Eigen::VectorXd &Y){
     track_.gen2DSpline(X,Y);
 }
 
+void MPC::setConfig(int n_sqp, int n_reset,double sqp_mixing, Param param, CostParam cost_param, BoundsParam bounds_param) {
+    n_sqp_ = n_sqp;
+    sqp_mixing_ = sqp_mixing;
+    n_non_solves_ = 0;
+    n_no_solves_sqp_ = 0;
+    n_reset_ = n_reset;
+    integrator_.setParam(param);
+    model_ = integrator_.getModel();
+    constraints_ = Constraints(param);
+    cost_ = Cost(cost_param);
+    bounds_ = Bounds(bounds_param);
+
+    track_.setParam(param);
+}
+
 MPC::MPC(int n_sqp, int n_reset,double sqp_mixing, Param param, CostParam cost_param, BoundsParam bounds_param)
 :valid_initial_guess_(false),solver_interface_(new HpipmInterface())
 {
@@ -201,4 +216,12 @@ MPC::MPC(int n_sqp, int n_reset,double sqp_mixing, Param param, CostParam cost_p
 
     track_.setParam(param);
 }
+
+MPC::MPC()
+:valid_initial_guess_(false),solver_interface_(new HpipmInterface())
+{
+    n_non_solves_ = 0;
+    n_no_solves_sqp_ = 0;
+}
+
 }

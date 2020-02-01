@@ -75,9 +75,11 @@ class MPC {
 public:
     MPCReturn runMPC(State &x0);
 
-    void setTrack(const Eigen::VectorXd &X, const Eigen::VectorXd &Y);
-
+    MPC();
     MPC(int n_sqp, int n_reset, double sqp_mixing, Param params, CostParam cost_param, BoundsParam bounds_param);
+
+    void setConfig(int n_sqp, int n_reset, double sqp_mixing, Param params, CostParam cost_param, BoundsParam bounds_param);
+    void setTrack(const Eigen::VectorXd &X, const Eigen::VectorXd &Y);
 
 private:
     bool valid_initial_guess_;

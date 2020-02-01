@@ -16,6 +16,9 @@
 
 #include "track.h"
 namespace mpcc{
+Track::Track() {
+}
+ 
 Track::Track(std::string file) 
 {
     /////////////////////////////////////////////////////
