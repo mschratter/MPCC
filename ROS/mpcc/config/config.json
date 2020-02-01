@@ -1,0 +1,7 @@
+
+{
+  "n_sqp": 2,
+  "n_reset": 5,
+  "sqp_mixing" : 0.8,
+  "n_sim": 600
+}

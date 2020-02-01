@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<launch>
+
+  <arg name="model_file_name" default="$(find mpcc)/config/model.json"/> 
+
+  <node pkg="mpcc" type="simple_sim_node" name="simple_sim" output="screen" respawn="false">
+    <rosparam file="$(find mpcc)/config/simulator.yaml" command="load" />
+    <param name="model_file_name" value="$(arg model_file_name)"/> 
+  </node>
+
+</launch>

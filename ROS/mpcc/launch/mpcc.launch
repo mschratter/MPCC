@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<launch>
+
+  <arg name="config_file_name" default="$(find mpcc)/config/config.json"/> 
+  <arg name="model_file_name" default="$(find mpcc)/config/model.json"/> 
+  <arg name="cost_file_name" default="$(find mpcc)/config/cost.json"/> 
+  <arg name="bounds_file_name" default="$(find mpcc)/config/bounds.json"/> 
+  <arg name="track_file_name" default="$(find mpcc)/config/track.json"/> 
+
+  <node pkg="mpcc" type="mpcc_node" name="mpcc_node" output="screen" respawn="false">
+    <rosparam file="$(find mpcc)/config/mpcc.yaml" command="load" />
+    <param name="config_file_name" value="$(arg config_file_name)"/> 
+    <param name="model_file_name" value="$(arg model_file_name)"/> 
+    <param name="cost_file_name" value="$(arg cost_file_name)"/> 
+    <param name="bounds_file_name" value="$(arg bounds_file_name)"/> 
+    <param name="track_file_name" value="$(arg track_file_name)"/> 
+  </node>
+
+</launch>
