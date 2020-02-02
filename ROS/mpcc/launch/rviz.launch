@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<launch>
+
+  <node pkg="rviz" type="rviz" name="rviz_vifware" respawn="true" output="screen" args="-d $(find mpcc)/launch/rviz/RVIZ_config.rviz">
+  </node>
+
+</launch>
